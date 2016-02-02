@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.util.UriComponentsBuilder;
 
 @Controller
-@RequestMapping("/user/preferences")
+@RequestMapping("/api/user/preferences")
 public class UserPreferenceResource {
 
     @Autowired
@@ -31,9 +31,9 @@ public class UserPreferenceResource {
 
         Link link = ControllerLinkBuilder.linkTo(UserPreferenceResource.class).slash(savedDto.getKey()).withSelfRel();
         savedDto.add(link);
-        
+
         HttpHeaders headers = new HttpHeaders();
-        headers.setLocation(builder.path("/user/preferences/{id}").buildAndExpand(savedDto.getKey()).toUri());
+        headers.setLocation(builder.path("/api/user/preferences/{id}").buildAndExpand(savedDto.getKey()).toUri());
         return new ResponseEntity<>(savedDto, headers, HttpStatus.CREATED);
     }
 
@@ -57,9 +57,9 @@ public class UserPreferenceResource {
 
         Link link = ControllerLinkBuilder.linkTo(UserPreferenceResource.class).slash(updatedDto.getKey()).withSelfRel();
         updatedDto.add(link);
-        
+
         HttpHeaders headers = new HttpHeaders();
-        headers.setLocation(builder.path("/user/preferences/{id}").buildAndExpand(updatedDto.getKey()).toUri());
+        headers.setLocation(builder.path("/api/user/preferences/{id}").buildAndExpand(updatedDto.getKey()).toUri());
         return new ResponseEntity<>(updatedDto, headers, HttpStatus.CREATED);
     }
 }
