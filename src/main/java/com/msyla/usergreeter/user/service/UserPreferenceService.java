@@ -29,6 +29,11 @@ public class UserPreferenceService {
         return mapper.map(up, UserPreferenceDto.class);
     }
 
+    public UserPreferenceDto getByFirstName(String firstName) {
+        UserPreference up = dao.findByFirstName(firstName);
+        return mapper.map(up, UserPreferenceDto.class);
+    }
+
     public List<UserPreferenceDto> getAll() {
         Iterable<UserPreference> ups = dao.findAll();
         List<UserPreferenceDto> dtos = new ArrayList<>();

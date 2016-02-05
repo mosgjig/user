@@ -11,8 +11,8 @@ create table public.authorities (
 );
 create unique index ix_auth_username on authorities (username,authority);
 
-INSERT INTO public.users(username,password,enabled) VALUES ('mod','mod', true);
-INSERT INTO public.authorities (username, authority) VALUES ('mod', 'ROLE_USER');
+INSERT INTO public.users(username,password,enabled) VALUES ('user','password', true);
+INSERT INTO public.authorities (username, authority) VALUES ('user', 'ROLE_USER');
 
 CREATE  TABLE public.user_preferences (
   id SERIAL PRIMARY KEY,
@@ -20,4 +20,4 @@ CREATE  TABLE public.user_preferences (
   last_name VARCHAR(45) NOT NULL ,
   season VARCHAR(45) NOT NULL);
 
-INSERT INTO public.user_preferences (first_name, last_name, season) VALUES ('Modest', 'Syla', 'winter');
+INSERT INTO public.user_preferences (first_name, last_name, season) VALUES ('user', 'userLast', 'winter');
