@@ -50,7 +50,7 @@ public class UserPreferenceResource {
 
     @RequestMapping(method = RequestMethod.GET)
     public @ResponseBody
-    List<UserPreferenceDto> getAll(@RequestParam String firstName) {
+    List<UserPreferenceDto> getAll(@RequestParam(required = false) String firstName) {
         List<UserPreferenceDto> dtos = new ArrayList<>();
         if (StringUtils.isNotBlank(firstName)) {
             UserPreferenceDto dto = service.getByFirstName(firstName);
