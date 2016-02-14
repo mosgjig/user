@@ -8,11 +8,16 @@ Initially a request from a potential client, now simply a project to showcase th
 
 ## Installation
 
-Pull and build with Maven.  Default profile is `dev_postgresql` which will point the datasource to `database:5432/usergreeter` therefore one has to coordinate these values accordingly and assure `usergreeter` schema exists.  In the case of PostgreSQL deployed locally, associate `127.0.0.1` to `database`.
+Pull and build & run with Maven.  Default profile is `dev_postgresql` which will point the datasource to `database:5432/usergreeter` therefore one has to coordinate these values accordingly and assure `usergreeter` schema exists.  In the case of PostgreSQL deployed locally, associate `127.0.0.1` to `database`.
 
 For **linux** or **Ubuntu** more specifically, one would alter `/etc/hosts` by adding the following `127.0.0.1       database` under `localhost`.  The reasoning behind this is for networking with Docker containers.
 
 Default OAuth2 credentials are *user*:*password*
+
+## API Reference
+
+Base app url: `localhost:8080/`
+User Preference CRUD api: `localhost:8080/api/user/preferences`
 
 ## Tests
 
