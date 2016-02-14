@@ -12,19 +12,15 @@ Pull and build with Maven.  Default profile is `dev_postgresql` which will point
 
 For **linux** or **Ubuntu** more specifically, one would alter `/etc/hosts` by adding the following `127.0.0.1       database` under `localhost`.  The reasoning behind this is for networking with Docker containers.
 
-Default OAuth2 credentials are user:password
-
-## API Reference
-
-Depending on the size of the project, if it is small and simple enough the reference docs can be added to the README. For medium size to larger projects it is important to at least provide a link to where the API reference docs live.
+Default OAuth2 credentials are *user*:*password*
 
 ## Tests
 
-No special instructions on tests, default maven behaviour runs tests.
+No special instructions on tests, default Maven behavior runs tests.
 
 ## Contributors
 
-Ping me of any issues, questions.
+Open an issue/ticket for any issues, questions.
 
 ## License
 
