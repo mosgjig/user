@@ -1,6 +1,6 @@
 ## Synopsis
 
-A simple User Service that provides crud operations behind Oauth2.  Currently, the service allows for updating user preferences.  The project is built leveraging Maven, Spring Boot, Flyway, and Dozer.  There are two profiles for pointing to different dabases, H2 and PostgreSQL.
+A simple User Service that provides crud operations behind OAuth2.  Currently, the service allows for updating user preferences.  The project is built leveraging Maven, Spring Boot, Flyway, and Dozer.  There are two profiles for pointing to different dabases, H2 and PostgreSQL.
 
 ## Motivation
 
@@ -8,9 +8,11 @@ Initially a request from a potential client, now simply a project to showcase th
 
 ## Installation
 
-Pull and build with Maven.  Default profile is `dev_postgresql` which will point the datasource to `database:5432/usergreeter` therefore one has to coordinate these values accordingly.  In the case of PostgreSQL deployed locally, associate `127.0.0.1` to `database`.
+Pull and build with Maven.  Default profile is `dev_postgresql` which will point the datasource to `database:5432/usergreeter` therefore one has to coordinate these values accordingly and assure `usergreeter` schema exists.  In the case of PostgreSQL deployed locally, associate `127.0.0.1` to `database`.
 
 For **linux** or **Ubuntu** more specifically, one would alter `/etc/hosts` by adding the following `127.0.0.1       database` under `localhost`.  The reasoning behind this is for networking with Docker containers.
+
+Default OAuth2 credentials are user:password
 
 ## API Reference
 
