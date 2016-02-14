@@ -24,15 +24,27 @@
 package com.msyla.usergreeter.user.dto;
 
 import java.io.Serializable;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.springframework.hateoas.ResourceSupport;
 
-public class UserPreferenceDto extends ResourceSupport implements Serializable{
+public class UserPreferenceDto extends ResourceSupport implements Serializable {
 
     private static final long serialVersionUID = -3745911724970637802L;
 
     private Long key;
+
+    @NotNull(message = "{userPreferences.firstName.null}")
+    @Size(min = 1, max = 45, message = "{userPreferences.firstName.size}")
     private String firstName;
+
+    @NotNull(message = "{userPreferences.lastName.null}")
+    @Size(min = 1, max = 45, message = "{userPreferences.lastName.size}")
     private String lastName;
+
+    @NotNull(message = "{userPreferences.season.null}")
+    @Size(min = 1, max = 45, message = "{userPreferences.season.size}")
     private String season;
 
     public UserPreferenceDto() {

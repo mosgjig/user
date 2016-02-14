@@ -27,6 +27,8 @@ import com.msyla.usergreeter.user.dto.UserPreferenceDto;
 import com.msyla.usergreeter.user.service.UserPreferenceService;
 import java.util.ArrayList;
 import java.util.List;
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.hateoas.Link;
@@ -52,7 +54,7 @@ public class UserPreferenceResource {
     private UserPreferenceService service;
 
     @RequestMapping(method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<UserPreferenceDto> create(@RequestBody UserPreferenceDto dto, UriComponentsBuilder builder) {
+    public ResponseEntity<UserPreferenceDto> create(@NotNull(message = "{userPreference.null}") @Valid @RequestBody UserPreferenceDto dto, UriComponentsBuilder builder) {
         UserPreferenceDto savedDto = service.create(dto);
 
         Link link = ControllerLinkBuilder.linkTo(UserPreferenceResource.class).slash(savedDto.getKey()).withSelfRel();
@@ -87,7 +89,7 @@ public class UserPreferenceResource {
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
-    public ResponseEntity<UserPreferenceDto> update(@PathVariable Long id, @RequestBody UserPreferenceDto dto, UriComponentsBuilder builder) {
+    public ResponseEntity<UserPreferenceDto> update(@PathVariable Long id, @RequestBody @Valid UserPreferenceDto dto, UriComponentsBuilder builder) {
 
         UserPreferenceDto updatedDto = service.update(id, dto);
 
