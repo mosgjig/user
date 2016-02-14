@@ -39,11 +39,15 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertTrue;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = CoreConfig.class, initializers = ConfigFileApplicationContextInitializer.class)
 @Transactional
-public class UserPreferenceDAOIntegrationTest {
+public class UserPreferenceDAOIT {
 
     @Autowired
     private UserPreferenceDAO userPreferenceDAO;

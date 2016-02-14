@@ -17,6 +17,7 @@
         <java.version>1.8</java.version>
         <tomcat.version>8.0.30</tomcat.version>
         <docker.image.prefix>mosgjig</docker.image.prefix>
+        <it.skip>false</it.skip>
     </properties>
             
     <dependencyManagement>
@@ -121,8 +122,42 @@
         </testResources>
         <plugins>
             <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-failsafe-plugin</artifactId>
+                <configuration>
+                    <skip>${it.skip}</skip>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>integration-test</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>pre-integration-test</id>
+                        <goals>
+                            <goal>start</goal>
+                        </goals>
+                        <configuration>
+                            <skip>${it.skip}</skip>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>post-integration-test</id>
+                        <goals>
+                            <goal>stop</goal>
+                        </goals>
+                        <configuration>
+                            <skip>${it.skip}</skip>
+                        </configuration>
+                    </execution>
+                </executions>
             </plugin>
             
             <plugin>
@@ -177,7 +212,7 @@
                 <spring.profiles.active>dev_postgresql</spring.profiles.active>
                 <spring.jpa.database>POSTGRESQL</spring.jpa.database>
                 <spring.datasource.platform>postgres</spring.datasource.platform>
-                <spring.jpa.show-sql>true</spring.jpa.show-sql>
+                <spring.jpa.show-sql>false</spring.jpa.show-sql>
                 <spring.database.driverClassName>org.postgresql.Driver</spring.database.driverClassName>
                 <spring.datasource.url>jdbc:postgresql://database:5432/usergreeter</spring.datasource.url>
                 <spring.datasource.username>postgres</spring.datasource.username>
