@@ -38,7 +38,10 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -53,7 +56,7 @@ public class UserPreferenceResource {
     @Autowired
     private UserPreferenceService service;
 
-    @RequestMapping(method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<UserPreferenceDto> create(@NotNull(message = "{userPreference.null}") @Valid @RequestBody UserPreferenceDto dto, UriComponentsBuilder builder) {
         UserPreferenceDto savedDto = service.create(dto);
 
@@ -65,7 +68,7 @@ public class UserPreferenceResource {
         return new ResponseEntity<>(savedDto, headers, HttpStatus.CREATED);
     }
 
-    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
+    @GetMapping(value = "/{id}")
     public ResponseEntity<UserPreferenceDto> getById(@PathVariable Long id) {
 
         UserPreferenceDto dto = service.getById(id);
@@ -73,7 +76,7 @@ public class UserPreferenceResource {
         return new ResponseEntity<>(dto, HttpStatus.OK);
     }
 
-    @RequestMapping(method = RequestMethod.GET)
+    @GetMapping
     public @ResponseBody
     List<UserPreferenceDto> getAll(@RequestParam(required = false) String firstName) {
         List<UserPreferenceDto> dtos = new ArrayList<>();
@@ -88,7 +91,7 @@ public class UserPreferenceResource {
         return dtos;
     }
 
-    @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
+    @PutMapping(value = "/{id}")
     public ResponseEntity<UserPreferenceDto> update(@PathVariable Long id, @RequestBody @Valid UserPreferenceDto dto, UriComponentsBuilder builder) {
 
         UserPreferenceDto updatedDto = service.update(id, dto);
